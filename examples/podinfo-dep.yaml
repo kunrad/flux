@@ -1,17 +1,24 @@
 ---
-apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: podinfo
+  name: pod-apply
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: pod-apply
   template:
     metadata:
       labels:
-        app: podinfo
+        app: pod-apply
     spec:
       containers:
-      - name: podinfo
-        image: quay.io/stefanprodan/podinfo:3.0.0
+      - name: pod-apply
+        image: quay.io/stefanprodan/podinfo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 3000
