@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pod-apply
-        image: nginx:1.14.2
+        image: nginx:1.18-perl
         resources:
           limits:
             memory: "128Mi"
